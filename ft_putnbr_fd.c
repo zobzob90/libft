@@ -1,45 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ertrigna <ertrigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 08:52:24 by ertrigna          #+#    #+#             */
-/*   Updated: 2024/11/07 09:36:20 by ertrigna         ###   ########.fr       */
+/*   Created: 2024/11/07 10:44:07 by ertrigna          #+#    #+#             */
+/*   Updated: 2024/11/07 11:01:01 by ertrigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *str, int c)
+void	ft_putnbr_fd(int n, int fd)
 {
-	size_t	i;
+	long	nb;
 
-	i = 0;
-	while (str[i])
+	nb = n;
+	if (nb < 0)
 	{
-		if (str[i] == (unsigned char) c)
-			return ((char *)(str + i));
-		i++;
+		ft_putchar_fd('-', fd);
+		nb = -nb;
 	}
-	if (c == '\0')
-		return ((char *)(str + i));
-	return (NULL);
-}
-
-/*
-int main()
-{
-	char *str = "hello";
-	char *result;
-
-	result = ft_strchr(str, 'e');
-	if (result)
-		printf("Premier caractère trouvé : %c\n", *result);
+	if (nb > 9)
+	{
+		ft_putnbr_fd(nb / 10, fd);
+		ft_putnbr_fd(nb % 10, fd);
+	}
 	else
-		printf("Caractère 'e' non trouvé.\n");
-
-	return 0;
+		ft_putchar_fd(nb + 48, fd);
 }
-*/

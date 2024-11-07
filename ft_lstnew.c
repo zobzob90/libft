@@ -1,42 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ertrigna <ertrigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/05 13:50:32 by ertrigna          #+#    #+#             */
-/*   Updated: 2024/11/07 09:24:17 by ertrigna         ###   ########.fr       */
+/*   Created: 2024/11/07 16:50:32 by ertrigna          #+#    #+#             */
+/*   Updated: 2024/11/07 17:02:40 by ertrigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+t_list	*ft_lstnew(void *content)
 {
-	size_t	i;
-	unsigned char	*d;
-	const	char	*s;
+	t_list	*new;
 
-	i = 0;
-	d = (unsigned char *)dest;
-	s = (const char *)src;
-	if (!dest && !src)
+	new = malloc(sizeof(t_list));
+	if (!new)
 		return (NULL);
-	while (i < n)
-	{
-		d[i] = s[i];
-		i++;
-	}
-	return (dest);
+	new->content = content;
+	new->next = NULL;
+	return (new);
 }
-
-/*
-int main()
-{
-	const char s[] = "12345";
-	char d[6];
-	ft_memcpy(d, s, sizeof(s));
-	printf("%s\n", d);
-}
-*/

@@ -1,45 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ertrigna <ertrigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 08:52:24 by ertrigna          #+#    #+#             */
-/*   Updated: 2024/11/07 09:36:20 by ertrigna         ###   ########.fr       */
+/*   Created: 2024/11/07 11:01:59 by ertrigna          #+#    #+#             */
+/*   Updated: 2024/11/07 11:18:50 by ertrigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *str, int c)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	size_t	i;
+	unsigned int	i;
+	char			*dest;
 
 	i = 0;
-	while (str[i])
+	if (!s || !f)
+		return (NULL);
+	dest = malloc(sizeof(char) * ft_strlen(s) + 1);
+	if (!dest)
+		return (NULL);
+	while (s[i])
 	{
-		if (str[i] == (unsigned char) c)
-			return ((char *)(str + i));
+		dest[i] = (*f)(i, s[i]);
 		i++;
 	}
-	if (c == '\0')
-		return ((char *)(str + i));
-	return (NULL);
+	dest[i] = '\0';
+	return (dest);
 }
-
-/*
-int main()
-{
-	char *str = "hello";
-	char *result;
-
-	result = ft_strchr(str, 'e');
-	if (result)
-		printf("Premier caractère trouvé : %c\n", *result);
-	else
-		printf("Caractère 'e' non trouvé.\n");
-
-	return 0;
-}
-*/

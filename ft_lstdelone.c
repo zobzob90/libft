@@ -1,45 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ertrigna <ertrigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 08:52:24 by ertrigna          #+#    #+#             */
-/*   Updated: 2024/11/07 09:36:20 by ertrigna         ###   ########.fr       */
+/*   Created: 2024/11/07 16:17:10 by ertrigna          #+#    #+#             */
+/*   Updated: 2024/11/07 16:31:57 by ertrigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *str, int c)
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	size_t	i;
-
-	i = 0;
-	while (str[i])
+	if (!del)
+		return ;
+	if (lst)
 	{
-		if (str[i] == (unsigned char) c)
-			return ((char *)(str + i));
-		i++;
+		(*del)(lst->content);
+		free(lst);
 	}
-	if (c == '\0')
-		return ((char *)(str + i));
-	return (NULL);
 }
-
-/*
-int main()
-{
-	char *str = "hello";
-	char *result;
-
-	result = ft_strchr(str, 'e');
-	if (result)
-		printf("Premier caractère trouvé : %c\n", *result);
-	else
-		printf("Caractère 'e' non trouvé.\n");
-
-	return 0;
-}
-*/

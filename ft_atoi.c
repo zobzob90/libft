@@ -6,7 +6,7 @@
 /*   By: ertrigna <ertrigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 16:45:04 by ertrigna          #+#    #+#             */
-/*   Updated: 2024/11/06 08:49:21 by ertrigna         ###   ########.fr       */
+/*   Updated: 2024/11/06 17:39:16 by ertrigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	ft_atoi(const char *str)
 		sign *= -1;
 		i++;
 	}
+	else if (str[i] == '+')
+		i++;
 	while ((str[i] >= 48 && str[i] <= 57) && str[i])
 	{
 		result = result * 10 + (str[i] - 48);

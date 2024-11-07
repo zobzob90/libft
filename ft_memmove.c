@@ -6,7 +6,7 @@
 /*   By: ertrigna <ertrigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 14:04:32 by ertrigna          #+#    #+#             */
-/*   Updated: 2024/11/05 14:36:22 by ertrigna         ###   ########.fr       */
+/*   Updated: 2024/11/07 09:25:25 by ertrigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ void	*ft_memmove(void *dest, const void *source, size_t n)
 	i = 0;
 	d = (unsigned char *)dest;
 	s = (unsigned char *)source;
-	if(d > s)
+	if (source == dest)
+		return (dest);
+	if (d > s)
 	{
 		while(n-- > 0)
 			d[n] = s[n];

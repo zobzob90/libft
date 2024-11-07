@@ -6,7 +6,7 @@
 /*   By: ertrigna <ertrigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 09:08:00 by ertrigna          #+#    #+#             */
-/*   Updated: 2024/11/06 09:18:36 by ertrigna         ###   ########.fr       */
+/*   Updated: 2024/11/07 09:38:37 by ertrigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 char	*ft_strrchr(const char *str, int c)
 {
-	size_t	i;
+	int	i;
 	char	to_find;
 
 	i = 0;
 	to_find = (unsigned char)c;
 	while (str[i])
 		i++;
-	while(i > 0)
+	while(i >= 0)
 	{
-		if(str[i - 1] == to_find)
-			return((char *)&str[i - 1]);
+		if(str[i] == to_find)
+			return((char *)&str[i]);
 		i--;
 	}
 	if (str[i] == to_find)

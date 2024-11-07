@@ -6,7 +6,7 @@
 /*   By: ertrigna <ertrigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:11:27 by ertrigna          #+#    #+#             */
-/*   Updated: 2024/11/06 14:01:34 by ertrigna         ###   ########.fr       */
+/*   Updated: 2024/11/07 15:55:14 by ertrigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,16 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*str2;
 	size_t	i;
-
-	if (!s)
+	
+	if(!s)
 		return (NULL);
-	str2 = malloc(sizeof(char) *(len + 1));
+	if (start >= ft_strlen(s))
+		len = 0;
+	else if (len > ft_strlen(s + start))
+		len = ft_strlen(s + start);
+	if (len == 0)
+		return (ft_strdup(""));
+	str2 = malloc(sizeof(char) * (len + 1));
 	if (!str2)
 		return (NULL);
 	i = 0;

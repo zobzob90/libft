@@ -1,45 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ertrigna <ertrigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 08:52:24 by ertrigna          #+#    #+#             */
-/*   Updated: 2024/11/07 09:36:20 by ertrigna         ###   ########.fr       */
+/*   Created: 2024/11/07 15:29:33 by ertrigna          #+#    #+#             */
+/*   Updated: 2024/11/07 15:35:46 by ertrigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *str, int c)
+int	ft_lstsize(t_list *lst)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
-	while (str[i])
+	while (lst)
 	{
-		if (str[i] == (unsigned char) c)
-			return ((char *)(str + i));
 		i++;
+		lst = lst->next;
 	}
-	if (c == '\0')
-		return ((char *)(str + i));
-	return (NULL);
+	return (i);
 }
-
-/*
-int main()
-{
-	char *str = "hello";
-	char *result;
-
-	result = ft_strchr(str, 'e');
-	if (result)
-		printf("Premier caractère trouvé : %c\n", *result);
-	else
-		printf("Caractère 'e' non trouvé.\n");
-
-	return 0;
-}
-*/

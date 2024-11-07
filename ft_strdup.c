@@ -6,7 +6,7 @@
 /*   By: ertrigna <ertrigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 16:23:01 by ertrigna          #+#    #+#             */
-/*   Updated: 2024/11/05 16:32:35 by ertrigna         ###   ########.fr       */
+/*   Updated: 2024/11/06 17:43:35 by ertrigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strdup(const char *src)
 	char	*dest;
 	size_t	i;
 
-	dest = malloc(sizeof(char) * (ft_strlen(src)));
+	dest = malloc(sizeof(char) * (ft_strlen(src) + 1));
 	if (!dest)
 		return (NULL);
 	i = 0;

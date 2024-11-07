@@ -1,42 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ertrigna <ertrigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/05 13:50:32 by ertrigna          #+#    #+#             */
-/*   Updated: 2024/11/07 09:24:17 by ertrigna         ###   ########.fr       */
+/*   Created: 2024/11/07 10:19:53 by ertrigna          #+#    #+#             */
+/*   Updated: 2024/11/07 10:20:44 by ertrigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	ft_putchar_fd(char c, int fd)
 {
-	size_t	i;
-	unsigned char	*d;
-	const	char	*s;
-
-	i = 0;
-	d = (unsigned char *)dest;
-	s = (const char *)src;
-	if (!dest && !src)
-		return (NULL);
-	while (i < n)
-	{
-		d[i] = s[i];
-		i++;
-	}
-	return (dest);
+	write(fd, &c, 1);
 }
-
-/*
-int main()
-{
-	const char s[] = "12345";
-	char d[6];
-	ft_memcpy(d, s, sizeof(s));
-	printf("%s\n", d);
-}
-*/
