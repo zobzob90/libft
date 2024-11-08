@@ -6,71 +6,74 @@
 /*   By: ertrigna <ertrigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 12:43:57 by ertrigna          #+#    #+#             */
-/*   Updated: 2024/11/07 14:11:03 by ertrigna         ###   ########.fr       */
+/*   Updated: 2024/11/08 11:51:47 by ertrigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_countwords(char const *s, char c)
+int	is_set(char c, char set)
 {
-	int	words;
-	int	i;
-
-	words = 0;
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] != c && (s[i + 1] == c || s[i + 1] == '\0'))
-			words++;
-		i++;
-	}
-	return (words + 1);
+	return (c == set);
 }
 
-static char	*ft_strndup(char *s, size_t len)
+int	count_words(char const *s, char c)
 {
-	size_t	i;
-	char	*dst;
+	int	cw;
 
-	i = 0;
-	dst = malloc(sizeof(char) * (len + 1));
-	if (!dst)
-		return (NULL);
-	while (i < len)
+	cw = 0;
+	while (*s)
 	{
-		dst[i] = s[i];
-		i++;
+		while (*s && is_set(*s, c))
+			s++;
+		if (*s)
+			cw++;
+		while (*s && !is_set(*s, c))
+			s++;
 	}
-	dst[i] = '\0';
-	return (dst);
+	return (cw);
 }
 
-char	**ft_split(char const *s, char c)
+char	*ft_strndup(const char *s, unsigned int n)
 {
-	char	**dest;
-	size_t	len;
-	size_t	i;
-	size_t	j;
+	char			*dest;
+	unsigned int	i;
 
 	i = 0;
-	j = 0;
-	if (!s)
-		return (NULL);
-	dest = ft_calloc((ft_countwords(s, c)), sizeof(char *));
+	dest = malloc(sizeof(char ) * (n + 1));
 	if (!dest)
 		return (NULL);
-	while (j < ft_countwords(s, c) - 1)
+	while (s[i] && i < n)
 	{
-		while (s[i] && s[i] == c)
-			i++;
-		len = 0;
-		while (s[i] && s[i] != c)
-		{
-			len++;
-			i++;
-		}
-		dest[j++] = ft_strndup(((char *)s + i - len), len);
+		dest[i] = s[i];
+		i++;
 	}
+	dest[i] = '\0';
 	return (dest);
+}
+
+char	**ft_split(const char *s, char c)
+{
+	char		**tab;
+	int			i;
+	const char	*start;
+
+	if (!s)
+		return (NULL);
+	tab = malloc(sizeof(char *) * (count_words(s, c) + 1));
+	if (!tab)
+		return (NULL);
+	i = 0;
+	while (*s)
+	{
+		while (*s && is_set(*s, c))
+			s++;
+		start = s;
+		while (*s && !is_set(*s, c))
+			s++;
+		if (start != s)
+			tab[i++] = ft_strndup(start, s - start);
+	}
+	tab[i] = NULL;
+	return (tab);
 }

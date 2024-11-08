@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ertrigna <ertrigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/07 16:03:53 by ertrigna          #+#    #+#             */
-/*   Updated: 2024/11/07 16:12:56 by ertrigna         ###   ########.fr       */
+/*   Created: 2024/11/08 10:24:48 by ertrigna          #+#    #+#             */
+/*   Updated: 2024/11/08 10:33:29 by ertrigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,17 @@
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
+	t_list *last;
+	
 	if (!lst || !new)
 		return ;
-	if (*lst)
-		ft_lstlast(*lst)->next = new;
-	else
+	if (*lst == NULL)
+	{
 		*lst = new;
+		return ;
+	}
+	last = *lst;
+	while(last->next != NULL)
+		last = last->next;
+	last->next = new;
 }

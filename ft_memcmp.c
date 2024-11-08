@@ -6,7 +6,7 @@
 /*   By: ertrigna <ertrigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 10:01:13 by ertrigna          #+#    #+#             */
-/*   Updated: 2024/11/06 10:15:26 by ertrigna         ###   ########.fr       */
+/*   Updated: 2024/11/08 12:04:42 by ertrigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ft_memcmp(const void *ptr, const	void *ptr2, size_t num)
 {
-	size_t	i;
-	unsigned char *p1;
-	unsigned char *p2;
+	size_t			i;
+	unsigned char	*p1;
+	unsigned char	*p2;
 
 	i = 0;
 	p1 = (unsigned char *)ptr;
@@ -25,7 +25,7 @@ int	ft_memcmp(const void *ptr, const	void *ptr2, size_t num)
 	{
 		if (p1[i] < p2[i])
 			return (-1);
-		else if (p1[i]> p2[i])
+		else if (p1[i] > p2[i])
 			return (1);
 		i++;
 	}

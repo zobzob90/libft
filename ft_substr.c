@@ -6,7 +6,7 @@
 /*   By: ertrigna <ertrigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:11:27 by ertrigna          #+#    #+#             */
-/*   Updated: 2024/11/07 15:55:14 by ertrigna         ###   ########.fr       */
+/*   Updated: 2024/11/08 11:48:15 by ertrigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*str2;
 	size_t	i;
-	
-	if(!s)
+
+	if (!s)
 		return (NULL);
 	if (start >= ft_strlen(s))
 		len = 0;

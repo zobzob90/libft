@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ertrigna <ertrigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/07 16:17:10 by ertrigna          #+#    #+#             */
-/*   Updated: 2024/11/07 16:31:57 by ertrigna         ###   ########.fr       */
+/*   Created: 2024/11/08 10:36:55 by ertrigna          #+#    #+#             */
+/*   Updated: 2024/11/08 10:45:19 by ertrigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	if (!del)
+	if (!lst || !del)
 		return ;
 	if (lst)
 	{
